@@ -1,0 +1,443 @@
+---
+layout:
+title: Dharma
+date: 2023-09-05
+categories: [Orientações, Soluções]
+tags: [bug bounty]
+---
+
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <title>Bug Hunting: Dharma System - Alta Cupula</title>
+        <link rel="canonical" href="/" />
+        <meta property="og:locale" content="pt-br" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Tutorial & Template - Alta Cúpula" />
+        <meta property="og:url" content="/tutorial/template/2023/08/25/2023-08-25-Tutorial-Template.html" />
+        <meta property="og:site_name" content="Alta Cúpula" />
+        <meta property="article:published_time" content="2023-08-25T09:55:47+00:00" />
+        <meta property="article:modified_time" content="2023-08-25T09:23:38+00:00" />
+        <meta property="og:image" content="../img/Template.png" />
+        <meta property="og:image:width" content="998" />
+        <meta property="og:image:height" content="645" />
+        <meta property="og:image:type" content="image/png" />
+        <meta name="author" content="Alta-Cúpula" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <script type="text/javascript" src="/js/text-javascript00.js"></script>
+        <style type="text/css" href="/css/head-style00.css"></style>
+        <link rel="stylesheet" id="wp-block-library-css" href="/css/wp-block-library.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="prismatic-blocks-css" href="/css/prismatic-blocks.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-theme.css" type="text/css" media="all" />
+        <style id="global-styles-inline-css" type="text/css" href="/css/global-style-inline.css"></style>
+        <link rel="stylesheet" id="prismatic-prism-css" href="/css/prismatic-prism.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="wp-ulike-css" href="/css/wp-ulike.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="portfolio-style-css" href="/css/portfolio-style.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="my-style-css" href="/css/my-style.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="portfolio-style-conditionals-css" href="/css/portfolio-style-conditionals.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="portfolio-style-mobile-css" href="/css/portfolio-style-mobile.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.css" type="text/css" media="all" />
+        <script type="text/javascript" src="/js/jquery-core.js" id="jquery-core-js"></script>
+        <script type="text/javascript" src="/js/jquery-migrate.js" id="jquery-migrate-js"></script>
+        <script type="text/javascript" src="/js/google-gtagjs.js" id="google_gtagjs-js" async></script>
+        <script type="text/javascript" src="/js/google-gtagjs-js-after.js" id="google_gtagjs-js-after"></script>
+        <style type="text/css" id="custom-background-css">
+            body.custom-background {
+                background-color: #232323;
+            }
+            
+        </style>
+        <link rel="icon" href="/img/logo-35x32.png" sizes="35x32" />
+        <link rel="icon" href="/img/logo-208x192.png" sizes="208x192" />
+        <link rel="apple-touch-icon" href="/img/logo-195x180.png" />
+        <meta name="msapplication-TileImage" content="/img/logo-292x270.png" />
+        <style>
+            #wrapper .post-date p {
+                background-color: #232323;
+            }
+            
+            #wrapper .site-title {}
+            
+            #wrapper .site-description {}
+            
+        </style>
+        <style type="text/css" id="wp-custom-css">
+            .dark ul.menu a:focus,
+            .dark ul.menu a:hover,
+            .dark ul.menu a:active,
+            li.current-menu-item a:link,
+            current-menu-item a menuitem,
+            li.current-menu-item a:visited {
+                color: #fff !important;
+            }
+            
+            .wp-block-prismatic-blocks {
+                margin: 0px;
+            }
+            
+            .wp-block-prismatic-blocks {
+                border: 0px;
+                color: unset !important;
+            }
+            
+        </style>
+        <script type="module" crossorigin="" src="/js/asset-index.js"></script>
+        <link rel="modulepreload" href="/js/asset-vendor.js">
+        <link rel="stylesheet" href="/css/asset-index.css">
+    </head>
+    
+    <body class="post-template-default single single-post postid-1360 single-format-standard custom-background wp-custom-logo portfolio-has-logo portfolio-has-title portfolio-has-desc portfolio-has-img portfolio-header-inactive portfolio-singular portfolio-no-sidebar portfolio-sidebar-1 portfolio-relative-text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-dark-grayscale">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 0.49803921568627" />
+                        <feFuncG type="table" tableValues="0 0.49803921568627" />
+                        <feFuncB type="table" tableValues="0 0.49803921568627" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-grayscale">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 1" />
+                        <feFuncG type="table" tableValues="0 1" />
+                        <feFuncB type="table" tableValues="0 1" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-purple-yellow">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" />
+                        <feFuncG type="table" tableValues="0 1" />
+                        <feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-blue-red">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 1" />
+                        <feFuncG type="table" tableValues="0 0.27843137254902" />
+                        <feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-midnight">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 0" />
+                        <feFuncG type="table" tableValues="0 0.64705882352941" />
+                        <feFuncB type="table" tableValues="0 1" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-magenta-yellow">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.78039215686275 1" />
+                        <feFuncG type="table" tableValues="0 0.94901960784314" />
+                        <feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-purple-green">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" />
+                        <feFuncG type="table" tableValues="0 1" />
+                        <feFuncB type="table" tableValues="0.44705882352941 0.4" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-blue-orange">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.098039215686275 1" />
+                        <feFuncG type="table" tableValues="0 0.66274509803922" />
+                        <feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <div id="wrapper">
+            <div id="header" class="top-header">
+                <div class="site-logo">
+                    <style>
+                        .custom-logo {
+                            height: 100px;
+                            max-height: 360px;
+                            max-width: 360px;
+                            width: 100px;
+                        }
+                        </style>
+                        <a href="/" class="custom-logo-link" rel="home">
+                            <img width="200" height="200" src="/img/logo-360x333.png" alt="Alta-Cúpula" />
+                        </a>
+                </div>
+                <div class="top-navigation">
+                    <a id="menu-toggle" class="menu-toggle" href="#sidr">
+                        <span class="screen-reader-text">Toggle Side Menu</span>
+                        <svg class="icon-menu-open" version="1.1" id="icon-open" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                            <rect y="2" width="24" height="2" />
+                            <rect y="11" width="24" height="2" />
+                            <rect y="20" width="24" height="2" />
+                        </svg>
+                        <svg class="icon-menu-close" version="1.1" id="icon-close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                            <rect x="0" y="11" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 12 28.9706)" width="24" height="2" />
+                            <rect x="0" y="11" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 28.9706 12)" width="24" height="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <main id="panel" class="container clearfix">
+                <div id="header" class="four columns side-header">
+                    <nav id="navigation" class="navigation-main" role="navigation" aria-label="Primary Navigation">
+                        <ul id="menu-main" class="menu">
+                            <li id="menu-item-1151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1151">
+                                <a href="/inicio/">
+                                    <span role="menuitem">Inicio</span>
+                                </a>
+                            </li>
+                            <li id="menu-item-1181" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-1181">
+                                <a href="/Categorias/">
+                                    <span role="menuitem">Categorias</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-1209" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1209">
+                                        <a href="/Pesquisas/">
+                                            <span role="menuitem">Pesquisas</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1184" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1184">
+                                        <a href="/Redações/">
+                                            <span role="menuitem">Redações</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1182">
+                                        <a href="/Orientações/">
+                                            <span role="menuitem">Orientações</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1182">
+                                        <a href="/Soluções/">
+                                            <span role="menuitem">Soluções</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-1178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1178">
+                                <a href="/Recursos/">
+                                    <span role="menuitem">Recursos</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-1179" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1179">
+                                        <a href="/Dicas/">
+                                            <span role="menuitem">Dicas</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1227">
+                                        <a href="/Tecnicas/">
+                                            <span role="menuitem">Técnicas</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1180" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1180">
+                                        <a href="/Ferramentas/">
+                                            <span role="menuitem">Ferramentas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-1152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1152">
+                                <a href="/Links/">
+                                    <span role="menuitem">Links</span>
+                                </a>
+                            </li>
+                            <li id="menu-item-1197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1197">
+                                <a href="/Sobre/">
+                                    <span role="menuitem">Sobre</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="ten columns">
+                        <div id="masthead">
+                            <p class="site-title">
+                                <a href="/" rel="home">Alta Cúpula</a>
+                            </p>
+                            <p class="site-description"> Techblog sobre Segurança </p>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="/js/ani-logos.js"></script>
+                <script type="text/javascript" src="/js/load-ini-logos.js"></script>
+                <div class="post-1360 post type-post status-publish format-standard has-post-thumbnail hentry category-researches" id="post-1360">
+                    <div class="row">
+                        <div class="post-header">
+                            <div class="ten columns inner-post">
+                                <div class="feature-img bg-img" style="background-image: url(/img/dharma.png);">
+                                    <img width="998" height="645" src="/img/Dharma.png" class="attachment-portfolio-featured-large size-portfolio-featured-large wp-post-image" alt decoding="async" loading="lazy" srcset="/img/dharma.png 998w, /img/dharma.png 300w, /img/dharma.png 768w" sizes="(max-width: 998px) 100vw, 998px" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="post-header">
+                            <div class="ten columns inner-post">
+                                <div class="custom-post-header">
+                                    <div class="post-intro clearfix">
+                                        <h1 class="headline">Bug Hunting: Dharma System</h1>
+                                        <div class="post-meta">
+                                            <div class="post-date">
+                                                <p>
+                                                    <span class="meta-prep meta-prep-author">Postado:</span>
+                                                    <a href="/orientações/soluções/2023/08/26/Dharma.html" title="21:55" rel="bookmark">
+                                                        <span class="entry-date">05. Setembro 2023</span>
+                                                    </a>
+                                                    <em>por</em>
+                                                    <a href="/Sobre/" rel="author">Alta Cúpula</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="post-navigation">
+                                            <div class="next-post"></div>
+                                            <div class="previous-post">
+                                                <a href="/lorem/ipsum/2023/08/25/ipsum-lorem.html" rel="prev">
+                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-taxonomy">
+                                            <a href="/Orientações/" rel="category tag">Orientações</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="content">
+                            <div class="sixteen columns">
+                                <div class="post-area no-sidebar">
+                                    <div class="post-holder">
+                                        <!-- Nesta tag html seguinte ficara o artigo/post a ser alterado -->
+                                        <article class="article clearfix">
+                                            <h1>Caça a Bugs: Sistema Dharma</h1>
+
+                                             <p>Bem-vindo à nossa aventura educacional de caça aos insetos no mundo fictício da Iniciativa Dharma! Neste artigo, exploraremos o processo de localização de bugs e vulnerabilidades em um sistema fictício apenas para fins educacionais. Observe que este é apenas um exercício de aprendizagem e não tem como objetivo encorajar quaisquer atividades de hacking no mundo real.</p>
+                                          
+                                             <h2>Introdução à Iniciativa Dharma</h2>
+                                          
+                                             <p>A Iniciativa Dharma, uma organização misteriosa da série de TV de ficção científica "Lost", nos fornece um sistema fictício intrigante para praticar nossas habilidades de caça a insetos. Ao explorar esse sistema fictício, podemos obter informações valiosas sobre as técnicas usadas pelos caçadores de bugs do mundo real e a importância da divulgação responsável.</p>
+                                          
+                                             <h2>O processo de caça aos bugs</h2>
+                                          
+                                             <p>Antes de começarmos nossa jornada de busca de bugs no sistema Dharma, vamos nos familiarizar com o processo de busca de bugs:</p>
+                                          
+                                             <ol>
+                                               <li>Pesquisa e reconhecimento: coletamos informações sobre o sistema, seus componentes e possíveis vulnerabilidades.</li>
+                                               <li>Verificação e enumeração: verificamos o sistema em busca de portas abertas, serviços e possíveis pontos de entrada.</li>
+                                               <li>Exploração: Tentamos explorar quaisquer vulnerabilidades identificadas para obter acesso não autorizado.</li>
+                                               <li>Documentação e relatórios: documentamos nossas descobertas e as reportamos às autoridades relevantes para garantir a divulgação responsável.</li>
+                                               <li>Correção e aplicação de patches: os administradores do sistema abordam as vulnerabilidades relatadas e aplicam os patches necessários.</li>
+                                             </ol>
+                                          
+                                             <h2>Explorando o Sistema Dharma</h2>
+                                          
+                                             <p>Agora que entendemos o processo de caça aos bugs, vamos mergulhar no sistema fictício do Dharma. Iremos nos imaginar como curiosos caçadores de bugs, explorando vários componentes do sistema para identificar possíveis vulnerabilidades.</p>
+                                          
+                                             <h3>1. Estações de trabalho Dharma</h3>
+                                          
+                                             <p>Começamos nossa jornada de caça aos bugs examinando as estações de trabalho Dharma. Descobrimos que versões desatualizadas de software estão sendo usadas, proporcionando uma oportunidade para os invasores explorarem vulnerabilidades conhecidas. Anotamos essa descoberta e passamos para o próximo componente.</p>
+                                          
+                                             <h3>2. Servidores do Dharma</h3>
+                                          
+                                             <p>A seguir, voltamos nossa atenção para os servidores do Dharma. Através de varredura e enumeração minuciosas, identificamos uma porta aberta que não deveria ser acessível ao público. Essa configuração incorreta poderia permitir acesso não autorizado a dados confidenciais. Documentamos essa vulnerabilidade e seguimos em frente.</p>
+                                          
+                                             <h3>3. Sistema de Segurança Dharma</h3>
+                                          
+                                             <p>À medida que continuamos nossa aventura de caça aos bugs, encontramos o sistema de segurança Dharma. Após realizar uma série de testes, descobrimos uma falha no mecanismo de autenticação que permite ataques de força bruta. Esta vulnerabilidade pode levar ao acesso não autorizado a áreas restritas. Fazemos um relatório detalhado de nossas descobertas.</p>
+                                          
+                                             <h2>Divulgação responsável e caça ética a bugs</h2>
+                                          
+                                             <p>Ao longo de nossa jornada de caça aos bugs no sistema fictício do Dharma, enfatizamos a importância da divulgação responsável e das práticas éticas de caça aos bugs. É crucial relatar nossas descobertas às autoridades competentes e permitir que os administradores do sistema resolvam as vulnerabilidades antes que elas possam ser exploradas por agentes mal-intencionados.</p>
+                                          
+                                             <h2>Conclusão</h2>
+                                             
+                                             <p>Ao explorar o sistema fictício do Dharma, obtivemos informações valiosas sobre o processo de caça aos bugs e a importância da divulgação responsável. Lembre-se, este exercício é puramente educacional e não tem como objetivo encorajar quaisquer atividades de hacking no mundo real. Fique curioso, seja ético e feliz caçando insetos!</p>                                
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="footer">
+                <div class="row">
+                    <div class="footer-information">
+                        <div class="align-center">
+                            <p class="footer-credits"> Copyright &copy; 2023 &middot; All Rights Reserved &middot; Alta Cúpula &middot;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/wp-ulike-extra.js" id="wp_ulike-js-extra"></script>
+        <script type="text/javascript" src="/js/wp-ulike.js" id="wp_ulike-js"></script>
+        <script type="text/javascript" src="/js/jquery-sidr.js" id="jquery-sidr-js"></script>
+        <script type="text/javascript" src="/js/jquery-fitdivs.js" id="jquery-fitvids-js"></script>
+        <script type="text/javascript" src="/js/jquery-colourbrightness.js" id="jquery-colourbrightness-js"></script>
+        <script type="text/javascript" src="/js/portfolio-custom.js" id="portfolio-custom-js"></script>
+        <script type="text/javascript" src="/js/jquery-flexslider.js" id="jquery-flexslider-js"></script>
+        <script defer type="text/javascript" src="/js/akismet-frontend.js" id="akismet-frontend-js"></script>
+    </body>
+    
+</html>

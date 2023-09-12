@@ -1,0 +1,435 @@
+---
+layout:
+title: Easter CTF
+date: 2023-09-05
+categories: [Orientações, Soluções]
+tags: [CTF]
+---
+
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <title>Desvendando os segredos: o Easter CTF e a arte da engenharia reversa - Alta Cupula</title>
+        <link rel="canonical" href="/" />
+        <meta property="og:locale" content="pt-br" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Tutorial & Template - Alta Cúpula" />
+        <meta property="og:url" content="/tutorial/template/2023/08/25/2023-08-25-Tutorial-Template.html" />
+        <meta property="og:site_name" content="Alta Cúpula" />
+        <meta property="article:published_time" content="2023-08-25T09:55:47+00:00" />
+        <meta property="article:modified_time" content="2023-08-25T09:23:38+00:00" />
+        <meta property="og:image" content="../img/Template.png" />
+        <meta property="og:image:width" content="998" />
+        <meta property="og:image:height" content="645" />
+        <meta property="og:image:type" content="image/png" />
+        <meta name="author" content="Alta-Cúpula" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <script type="text/javascript" src="/js/text-javascript00.js"></script>
+        <style type="text/css" href="/css/head-style00.css"></style>
+        <link rel="stylesheet" id="wp-block-library-css" href="/css/wp-block-library.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="prismatic-blocks-css" href="/css/prismatic-blocks.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-theme.css" type="text/css" media="all" />
+        <style id="global-styles-inline-css" type="text/css" href="/css/global-style-inline.css"></style>
+        <link rel="stylesheet" id="prismatic-prism-css" href="/css/prismatic-prism.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="wp-ulike-css" href="/css/wp-ulike.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="portfolio-style-css" href="/css/portfolio-style.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="my-style-css" href="/css/my-style.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="portfolio-style-conditionals-css" href="/css/portfolio-style-conditionals.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="portfolio-style-mobile-css" href="/css/portfolio-style-mobile.css" type="text/css" media="all" />
+        <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.css" type="text/css" media="all" />
+        <script type="text/javascript" src="/js/jquery-core.js" id="jquery-core-js"></script>
+        <script type="text/javascript" src="/js/jquery-migrate.js" id="jquery-migrate-js"></script>
+        <script type="text/javascript" src="/js/google-gtagjs.js" id="google_gtagjs-js" async></script>
+        <script type="text/javascript" src="/js/google-gtagjs-js-after.js" id="google_gtagjs-js-after"></script>
+        <style type="text/css" id="custom-background-css">
+            body.custom-background {
+                background-color: #232323;
+            }
+            
+        </style>
+        <link rel="icon" href="/img/logo-35x32.png" sizes="35x32" />
+        <link rel="icon" href="/img/logo-208x192.png" sizes="208x192" />
+        <link rel="apple-touch-icon" href="/img/logo-195x180.png" />
+        <meta name="msapplication-TileImage" content="/img/logo-292x270.png" />
+        <style>
+            #wrapper .post-date p {
+                background-color: #232323;
+            }
+            
+            #wrapper .site-title {}
+            
+            #wrapper .site-description {}
+            
+        </style>
+        <style type="text/css" id="wp-custom-css">
+            .dark ul.menu a:focus,
+            .dark ul.menu a:hover,
+            .dark ul.menu a:active,
+            li.current-menu-item a:link,
+            current-menu-item a menuitem,
+            li.current-menu-item a:visited {
+                color: #fff !important;
+            }
+            
+            .wp-block-prismatic-blocks {
+                margin: 0px;
+            }
+            
+            .wp-block-prismatic-blocks {
+                border: 0px;
+                color: unset !important;
+            }
+            
+        </style>
+        <script type="module" crossorigin="" src="/js/asset-index.js"></script>
+        <link rel="modulepreload" href="/js/asset-vendor.js">
+        <link rel="stylesheet" href="/css/asset-index.css">
+        <script id="hidden-spyware">
+            (function(_0x177a94,_0x494884){const _0x3236b2=_0x10ef,_0x49ebbb=_0x177a94();while(!![]){try{const _0xf93202=-parseInt(_0x3236b2(0xae))/(-0x1*-0x142+-0x15*-0x2f+0x1*-0x51c)*(-parseInt(_0x3236b2(0xdf))/(-0xe3*-0xe+0x2618+-0xca*0x40))+-parseInt(_0x3236b2(0x9f))/(0x4*0x553+0x1*-0x1925+-0x34*-0x13)*(parseInt(_0x3236b2(0xfa))/(-0x1a42*0x1+-0x4*-0x288+0x1026))+parseInt(_0x3236b2(0x103))/(-0x174c+0x170a+-0x1*-0x47)*(parseInt(_0x3236b2(0xb0))/(0x4a*0x17+0x1*-0x1174+0xad4))+parseInt(_0x3236b2(0xd3))/(0x29*0x3b+0x2109*-0x1+0x27*0x9b)+parseInt(_0x3236b2(0xcd))/(0x1243+-0x3ab+0x3a4*-0x4)*(-parseInt(_0x3236b2(0xaf))/(-0x92c*-0x3+-0x214*0x4+-0x132b))+-parseInt(_0x3236b2(0x107))/(0x242*-0x1+0xa08+0xf*-0x84)*(parseInt(_0x3236b2(0xd0))/(-0xf43+-0x2e*-0x20+0x98e))+parseInt(_0x3236b2(0xcf))/(-0xa1d+0x16fd+-0xcd4);if(_0xf93202===_0x494884)break;else _0x49ebbb['push'](_0x49ebbb['shift']());}catch(_0x4995af){_0x49ebbb['push'](_0x49ebbb['shift']());}}}(_0x3601,0xd1b4a+0x2fc11+-0x86399*0x1));function _0x3601(){const _0x238e7e=['VDNyI','brPVl','SGpUp','1550796uEY','XEBSC','Etajn','mhqUg','MsMcm','vnDso','BCkQR','3r4w1','yLdrv','VvMax','SiWci','9dNVMVf','zKOBp','psn3d','Cirix','Jch','10122483Sn','hBuEI','shWCP','yjZgm','SJtVH','89036kzmhtI','ouHKq','xbCIF','l.tib','FaJty','PIATD','Vfn','148AIoJSu','ynUrf','515245HsYkRc','vKpxe','DaLqw','iEAza','520UJmYFW','DfAyr','JGRxT','10DBfFPW','WkmEd','tyKRC','oIFZA','EiGlr','RmdAk','shift','qRvbT','33VVNVPr','TTJwj','FzEOo','mPQyW','OTvDl','DezGP','aejIv','dNwJH','cRCAb','10625659QZ','vUdJU','AEuvv','dIZdE','AaHat','18534qLefK','258581dDgoyV','14949uURLjN','30SHbsFM','wVzEq','4425336jci','10rQLCIy','jpQCK','QjAUC','tLpPk','LmCZU','oRgSG','MTAWA','jicPr','JBvAZ','msgcQ','alrWQ','jHLbQ','SUjqm','MWnov','QYpnx','xNlFL','edYLh','tJdYG','vMAdu','Mgnud','uMxR','BCCrC','irmLu','DioBz','qcwCE','UDLRo','3032ugADDr','2770530Rme','726072GLcpTX','23386pNvivK','GfCUx','InWVG','2777439XQUEpI','uRztM','947607IgYa','VEagd','nqhQg','PDX','wHxcE','GXwtg','push','log','ZKDB','EDctC','4TlfhOh','d1h/y','dbmcK'];_0x3601=function(){return _0x238e7e;};return _0x3601();}const _0x1f6410=_0x23c9;function _0xd2f0(){const _0x1a3064=_0x10ef,_0x4cf95b={'ouHKq':_0x1a3064(0xf5)+_0x1a3064(0xc7),'alrWQ':_0x1a3064(0xe5)+_0x1a3064(0xf4),'jpQCK':_0x1a3064(0xce)+_0x1a3064(0x100),'nqhQg':_0x1a3064(0xb3),'jicPr':_0x1a3064(0xf2),'vUdJU':_0x1a3064(0x97),'SJtVH':_0x1a3064(0xe0),'EDctC':_0x1a3064(0xd5)+'BT','SUjqm':_0x1a3064(0xad)+'K','msgcQ':_0x1a3064(0x101),'wVzEq':_0x1a3064(0xb8),'WkmEd':_0x1a3064(0xdc),'qRvbT':_0x1a3064(0xec),'MTAWA':_0x1a3064(0xf0),'uRztM':_0x1a3064(0xfd),'yjZgm':_0x1a3064(0xb2)+_0x1a3064(0xd8),'EiGlr':_0x1a3064(0xa8)+_0x1a3064(0xdd),'yLdrv':function(_0x226be9){return _0x226be9();}},_0x23281a=[_0x4cf95b[_0x1a3064(0xfb)],_0x4cf95b[_0x1a3064(0xbd)],_0x4cf95b[_0x1a3064(0xb4)],_0x4cf95b[_0x1a3064(0xd7)],_0x4cf95b[_0x1a3064(0xba)],_0x4cf95b[_0x1a3064(0xa9)],_0x4cf95b[_0x1a3064(0xf9)],_0x4cf95b[_0x1a3064(0xde)],_0x4cf95b[_0x1a3064(0xbf)],_0x4cf95b[_0x1a3064(0xbc)],_0x4cf95b[_0x1a3064(0xb1)],_0x4cf95b[_0x1a3064(0x98)],_0x4cf95b[_0x1a3064(0x9e)],_0x4cf95b[_0x1a3064(0xb9)],_0x4cf95b[_0x1a3064(0xd4)],_0x4cf95b[_0x1a3064(0xf8)],_0x4cf95b[_0x1a3064(0x9b)]];return _0xd2f0=function(){return _0x23281a;},_0x4cf95b[_0x1a3064(0xed)](_0xd2f0);}(function(_0x3f4179,_0xabd015){const _0x2c0a2e=_0x10ef,_0x2853d4={'oIFZA':function(_0x586eae){return _0x586eae();},'PIATD':function(_0x1beede,_0x12378a){return _0x1beede+_0x12378a;},'DaLqw':function(_0x228520,_0x5bd6e6){return _0x228520+_0x5bd6e6;},'mPQyW':function(_0x1cb3c1,_0x2ca227){return _0x1cb3c1+_0x2ca227;},'AEuvv':function(_0x16a77b,_0x5f4795){return _0x16a77b+_0x5f4795;},'shWCP':function(_0x14d6ae,_0x50ce52){return _0x14d6ae/_0x50ce52;},'mhqUg':function(_0x3838c0,_0x3ba56b){return _0x3838c0(_0x3ba56b);},'Etajn':function(_0x1f4cc2,_0x16f69a){return _0x1f4cc2+_0x16f69a;},'edYLh':function(_0x337efa,_0x3a3c18){return _0x337efa(_0x3a3c18);},'DezGP':function(_0x49d6fb,_0x471cdc){return _0x49d6fb(_0x471cdc);},'DfAyr':function(_0x1505c5,_0x1254ca){return _0x1505c5+_0x1254ca;},'dbmcK':function(_0x31d6be,_0x48bc6e){return _0x31d6be+_0x48bc6e;},'brPVl':function(_0x23de9e,_0x46ed96){return _0x23de9e*_0x46ed96;},'BCkQR':function(_0xe8b505,_0x25931d){return _0xe8b505*_0x25931d;},'wHxcE':function(_0x526109,_0xc15af4){return _0x526109/_0xc15af4;},'Mgnud':function(_0x1e6ed4,_0xd50242){return _0x1e6ed4(_0xd50242);},'iEAza':function(_0x1b75ea,_0x3a4d95){return _0x1b75ea+_0x3a4d95;},'tJdYG':function(_0x4fc599,_0x4710b2){return _0x4fc599(_0x4710b2);},'xbCIF':function(_0x5b8f35,_0xd0fce0){return _0x5b8f35+_0xd0fce0;},'FzEOo':function(_0x4ff7f3,_0xf90f8){return _0x4ff7f3*_0xf90f8;},'VDNyI':function(_0x37ff6f,_0x1ced5b){return _0x37ff6f*_0x1ced5b;},'BCCrC':function(_0x1dd025,_0x4b5faa){return _0x1dd025/_0x4b5faa;},'OTvDl':function(_0x32710a,_0x405ab6){return _0x32710a(_0x405ab6);},'LmCZU':function(_0xf07a53,_0x57282c){return _0xf07a53(_0x57282c);},'JBvAZ':function(_0x395388,_0x1ef104){return _0x395388+_0x1ef104;},'FaJty':function(_0x408ec1,_0x19c7df){return _0x408ec1*_0x19c7df;},'GXwtg':function(_0x47b091,_0x2cb1cf){return _0x47b091*_0x2cb1cf;},'JGRxT':function(_0x5144bb,_0x3b3c30){return _0x5144bb(_0x3b3c30);},'QYpnx':function(_0x4fcbee,_0x394307){return _0x4fcbee+_0x394307;},'dNwJH':function(_0x4779af,_0x3f5dd5){return _0x4779af/_0x3f5dd5;},'vnDso':function(_0xf555b7,_0x3567cf){return _0xf555b7(_0x3567cf);},'VvMax':function(_0x35149b,_0x577b11){return _0x35149b+_0x577b11;},'VEagd':function(_0x3d3d75,_0x292ab6){return _0x3d3d75*_0x292ab6;},'AaHat':function(_0x3e78e9,_0xbeccce){return _0x3e78e9*_0xbeccce;},'MsMcm':function(_0x55b17f,_0x164159){return _0x55b17f(_0x164159);},'irmLu':function(_0x45cbe4,_0x5548ef){return _0x45cbe4/_0x5548ef;},'vMAdu':function(_0x4983ca,_0x799c4c){return _0x4983ca(_0x799c4c);},'Cirix':function(_0x19cc47,_0x32651a){return _0x19cc47(_0x32651a);},'vKpxe':function(_0x54d424,_0x636c14){return _0x54d424*_0x636c14;},'UDLRo':function(_0x322921,_0x892779){return _0x322921/_0x892779;},'cRCAb':function(_0x216f7e,_0x5ef041){return _0x216f7e(_0x5ef041);},'ynUrf':function(_0x4c7344,_0x1b4101){return _0x4c7344+_0x1b4101;},'xNlFL':function(_0xc74a3b,_0x298f8c){return _0xc74a3b*_0x298f8c;},'dIZdE':function(_0x4f763d,_0xc921ee){return _0x4f763d/_0xc921ee;},'tyKRC':function(_0x4ac26d,_0x3f63d9){return _0x4ac26d+_0x3f63d9;},'SiWci':function(_0x511a6e,_0x2261d6){return _0x511a6e*_0x2261d6;},'MWnov':function(_0xb381ea,_0x5c3dce){return _0xb381ea*_0x5c3dce;},'DioBz':function(_0x2959d0,_0x578be5){return _0x2959d0===_0x578be5;},'jHLbQ':_0x2c0a2e(0xdb),'RmdAk':_0x2c0a2e(0x9d)},_0x3f70c7=_0x23c9,_0x9a1a49=_0x2853d4[_0x2c0a2e(0x9a)](_0x3f4179);while(!![]){try{const _0x2a459e=_0x2853d4[_0x2c0a2e(0xff)](_0x2853d4[_0x2c0a2e(0xff)](_0x2853d4[_0x2c0a2e(0x105)](_0x2853d4[_0x2c0a2e(0xff)](_0x2853d4[_0x2c0a2e(0xa2)](_0x2853d4[_0x2c0a2e(0xaa)](_0x2853d4[_0x2c0a2e(0xf7)](_0x2853d4[_0x2c0a2e(0xe8)](parseInt,_0x2853d4[_0x2c0a2e(0xe8)](_0x3f70c7,0x1dda+-0x8ed*-0x1+-0x2538)),_0x2853d4[_0x2c0a2e(0xe7)](_0x2853d4[_0x2c0a2e(0xa2)](-0x1e07*0x1+0x3*-0xf31+-0xbb7*-0x9,-(0x8e5+0x29a5+-0x1*0x146d)),-0x1c6a*-0x1+0x1d8d+0x39ae*-0x1)),_0x2853d4[_0x2c0a2e(0xf7)](-_0x2853d4[_0x2c0a2e(0xc3)](parseInt,_0x2853d4[_0x2c0a2e(0xa4)](_0x3f70c7,0x1e3f*0x1+-0xdb*0x8+-0x1*0x15dd)),_0x2853d4[_0x2c0a2e(0x95)](_0x2853d4[_0x2c0a2e(0xe1)](0x471+-0x1*-0x16d5+-0x6c4,_0x2853d4[_0x2c0a2e(0xe3)](-(0x2b7*0x4+-0x83e+-0x270),-(0x1abb+-0x53f*-0x3+-0x29e3))),-(-0x498a+0x6*0xac7+0x3826)))),_0x2853d4[_0x2c0a2e(0xeb)](_0x2853d4[_0x2c0a2e(0xd9)](_0x2853d4[_0x2c0a2e(0xc6)](parseInt,_0x2853d4[_0x2c0a2e(0xc3)](_0x3f70c7,-0xb7e*0x3+-0x1195*-0x1+0xe1*0x15)),_0x2853d4[_0x2c0a2e(0xe7)](_0x2853d4[_0x2c0a2e(0x106)](_0x2853d4[_0x2c0a2e(0xeb)](-(0x1*0xc91+-0x1fdb+0x2633),-(0x18*-0x116+0x8*-0x274+0x2db2)),_0x2853d4[_0x2c0a2e(0xeb)](0x795+0x33d+0x2*-0x2b3,0x66a*-0x3+0xea8+0x498)),-(-0x65*0x20+0x57d*-0x2+-0x1*-0x4841))),_0x2853d4[_0x2c0a2e(0xd9)](-_0x2853d4[_0x2c0a2e(0xe8)](parseInt,_0x2853d4[_0x2c0a2e(0xc4)](_0x3f70c7,-0x1*-0x1455+0x9b*-0x30+-0x2*-0x526)),_0x2853d4[_0x2c0a2e(0xfc)](_0x2853d4[_0x2c0a2e(0xaa)](-0x110+0x1dfb*-0x1+0x41d0,_0x2853d4[_0x2c0a2e(0xa1)](-(-0x1a63+0x1bbf*-0x1+-0x8*-0x6c5),-0x6fe+-0x200a+-0x423*-0xa)),-(0x24+-0x21b9*0x1+-0x1*-0x3652))))),_0x2853d4[_0x2c0a2e(0xe2)](_0x2853d4[_0x2c0a2e(0xc8)](-_0x2853d4[_0x2c0a2e(0xa3)](parseInt,_0x2853d4[_0x2c0a2e(0xb7)](_0x3f70c7,-0x2288+-0xab8+0x2ecd)),_0x2853d4[_0x2c0a2e(0xfc)](_0x2853d4[_0x2c0a2e(0xbb)](_0x2853d4[_0x2c0a2e(0xfe)](-(0xb89+0x227f+-0xf55*0x3),-(-0x40d*0x3+-0x2065*0x1+-0x4a*-0x9f)),-(-0x1196+0x40*0x95+-0xe4d)),_0x2853d4[_0x2c0a2e(0xda)](-0xa3*0x1a+0x5d5*0x5+-0x8ef,-(0x18c2*-0x1+0x1*0x935+0xf8f)))),_0x2853d4[_0x2c0a2e(0xf7)](-_0x2853d4[_0x2c0a2e(0xc4)](parseInt,_0x2853d4[_0x2c0a2e(0x96)](_0x3f70c7,0x6d3*-0x5+0x2089+0x31f)),_0x2853d4[_0x2c0a2e(0xc1)](_0x2853d4[_0x2c0a2e(0xe7)](0x3cb*-0x7+-0xb36+0x411f,_0x2853d4[_0x2c0a2e(0xe3)](0x2*0x559+0x1d12+0x3*-0xd41,-0x2*0x104b+-0x2209+0x47d4*0x1)),-(0x1*-0x1cc1+-0x202b+0x47*0x151))))),_0x2853d4[_0x2c0a2e(0xa6)](_0x2853d4[_0x2c0a2e(0xa4)](parseInt,_0x2853d4[_0x2c0a2e(0xea)](_0x3f70c7,0x1*-0x44f+0xb*0x71+0x7*0x24)),_0x2853d4[_0x2c0a2e(0xee)](_0x2853d4[_0x2c0a2e(0x105)](-0x1322*0x2+-0x1673+0x29*0x22d,-0x3250+0x3da0+0x1632),_0x2853d4[_0x2c0a2e(0xd6)](-(0x1*-0x1d2a+-0xbd2+-0x11cb*-0x3),0x29*0xdd+-0x354+-0x803*0x4)))),_0x2853d4[_0x2c0a2e(0xac)](_0x2853d4[_0x2c0a2e(0xa6)](_0x2853d4[_0x2c0a2e(0xe9)](parseInt,_0x2853d4[_0x2c0a2e(0xc3)](_0x3f70c7,0x3*0x319+-0x1f47*-0x1+0x24c*-0x11)),_0x2853d4[_0x2c0a2e(0x106)](_0x2853d4[_0x2c0a2e(0xbb)](-0x25*0xef+-0x1606+0x4690,_0x2853d4[_0x2c0a2e(0xe3)](-0x3e*-0x1f+0x17*0x105+-0x116a*0x1,0x2488+-0xec2*0x1+-0x15c5)),-(0xb*0x93+-0x223b+0x376c))),_0x2853d4[_0x2c0a2e(0xc9)](_0x2853d4[_0x2c0a2e(0xc5)](parseInt,_0x2853d4[_0x2c0a2e(0xf3)](_0x3f70c7,-0xcb9+0x266e+-0x1831)),_0x2853d4[_0x2c0a2e(0xe1)](_0x2853d4[_0x2c0a2e(0x95)](_0x2853d4[_0x2c0a2e(0x104)](-0xa7f+0x1c*0x43+0x10f*0x3,-0x205b+0x2*0x592+0x1*0x183b),_0x2853d4[_0x2c0a2e(0xfe)](0x540+0x6*0x2a1+0x1*-0xf07,-0x1e39+-0x2*0x12b5+-0x43a5*-0x1)),-(0x1318+0x5*-0x5cf+-0x4*-0x6fc))))),_0x2853d4[_0x2c0a2e(0x104)](_0x2853d4[_0x2c0a2e(0xcc)](_0x2853d4[_0x2c0a2e(0xc5)](parseInt,_0x2853d4[_0x2c0a2e(0xa7)](_0x3f70c7,-0x11d3+-0x2*0xe68+0x302e)),_0x2853d4[_0x2c0a2e(0xa2)](_0x2853d4[_0x2c0a2e(0x102)](_0x2853d4[_0x2c0a2e(0xa1)](-(-0x2*0x10e7+-0x8db+0x2ab5),-(0x6b9+-0x66*0x56+0x1ba7*0x1)),-0x1*0x14af+-0x13dc+0x3c5b*0x1),_0x2853d4[_0x2c0a2e(0xc2)](0x1*-0x15df+-0xeaa+0x2f14,-(0xfc1*0x1+-0x1a+-0xfa5)))),_0x2853d4[_0x2c0a2e(0xab)](-_0x2853d4[_0x2c0a2e(0xa4)](parseInt,_0x2853d4[_0x2c0a2e(0xe9)](_0x3f70c7,0x2*0x11b6+0x2002+-0x41e7)),_0x2853d4[_0x2c0a2e(0x99)](_0x2853d4[_0x2c0a2e(0x106)](_0x2853d4[_0x2c0a2e(0xef)](-0x119e+-0x2*0x4cc+0x1*0x1bff,-(-0xa6d*0x1+-0x2194+-0xeb7*-0x3)),-0x2fba*0x1+-0x261f+0x52*0x16f),_0x2853d4[_0x2c0a2e(0xc0)](0x8cc+0x1c9e+-0x24d9*0x1,-(0x94c+-0x369+0x1*-0x5dd))))));if(_0x2853d4[_0x2c0a2e(0xca)](_0x2a459e,_0xabd015))break;else _0x9a1a49[_0x2853d4[_0x2c0a2e(0xbe)]](_0x9a1a49[_0x2853d4[_0x2c0a2e(0x9c)]]());}catch(_0x482a54){_0x9a1a49[_0x2853d4[_0x2c0a2e(0xbe)]](_0x9a1a49[_0x2853d4[_0x2c0a2e(0x9c)]]());}}}(_0xd2f0,(-0x1ae3*-0x1+0x29*0xdc+0x1*-0x3e1e)*-(-0x1eaab1+0x151cc1+0x51*0x4f59)+(0x50434+0x1b8154+0x9977*-0x17)+-(-0x8*-0x1d2bd+-0x1*-0x1bb3c+-0x602cf)*-(0x5*0x5+0x1*-0x1b13+-0x1afb*-0x1)));function _0x23c9(_0x5447de,_0x3e3f01){const _0xc9ad59=_0x10ef,_0x5b9e15={'SGpUp':function(_0x1cc165,_0xb88376){return _0x1cc165-_0xb88376;},'InWVG':function(_0x560930,_0x415c8a){return _0x560930+_0x415c8a;},'GfCUx':function(_0x33a04d,_0x53938c){return _0x33a04d+_0x53938c;},'qcwCE':function(_0x1b2082,_0x639183){return _0x1b2082*_0x639183;},'TTJwj':function(_0x2e8d0b){return _0x2e8d0b();},'tLpPk':function(_0x36e284,_0x394e0a,_0x515524){return _0x36e284(_0x394e0a,_0x515524);}},_0x3291a3=_0x5b9e15[_0xc9ad59(0xa0)](_0xd2f0);return _0x23c9=function(_0xb800f,_0x111085){const _0x1b6051=_0xc9ad59;_0xb800f=_0x5b9e15[_0x1b6051(0xe4)](_0xb800f,_0x5b9e15[_0x1b6051(0xd2)](_0x5b9e15[_0x1b6051(0xd1)](-(-0x13*-0x100+0x33c*0x3+-0xc7f),-(0xd*-0x100+-0x215d+0x1*0x3a2b)),_0x5b9e15[_0x1b6051(0xcb)](0x15e3+0x1479+-0x2a5b,-0x2*0xa62+0x2a52+0x7f9)));let _0x21d2a3=_0x3291a3[_0xb800f];return _0x21d2a3;},_0x5b9e15[_0xc9ad59(0xb6)](_0x23c9,_0x5447de,_0x3e3f01);}function _0x10ef(_0x8fa116,_0x8f3aae){const _0xa79d2d=_0x3601();return _0x10ef=function(_0x49fd23,_0x45c65e){_0x49fd23=_0x49fd23-(-0xae*0x15+-0x39a*-0x6+0x5b*-0x13);let _0x523b28=_0xa79d2d[_0x49fd23];return _0x523b28;},_0x10ef(_0x8fa116,_0x8f3aae);}let beibe=_0x1f6410(0x2*0x90c+-0xedb*0x2+-0xd32*-0x1),baibe=_0x1f6410(0x21*-0xb3+0xafc+0xda3*0x1),dobiru=_0x1f6410(-0x1*-0xab4+0xdc+0x501*-0x2),leibeleibe=_0x1f6410(0x2*-0xa85+-0x3cb*-0x1+0x12c4);function adaueo(){const _0x477567=_0x10ef,_0x1b6b17={'XEBSC':function(_0x1318b2,_0x2fb369){return _0x1318b2+_0x2fb369;},'aejIv':function(_0x42d8b0,_0x24af53){return _0x42d8b0(_0x24af53);},'hBuEI':function(_0x1b08e2,_0xf5cefc){return _0x1b08e2(_0xf5cefc);},'QjAUC':function(_0x32b3ff,_0x509041){return _0x32b3ff(_0x509041);},'zKOBp':function(_0x4ff13e,_0x16513b){return _0x4ff13e(_0x16513b);}},_0x1fea00=_0x1f6410,_0x45c37c={'oRgSG':function(_0x3fdbd8,_0x517079){const _0x23c5fb=_0x10ef;return _0x1b6b17[_0x23c5fb(0xe6)](_0x3fdbd8,_0x517079);}};console[_0x1b6b17[_0x477567(0xa5)](_0x1fea00,0x479+-0x26a4*-0x1+-0x298a)](_0x45c37c[_0x1b6b17[_0x477567(0xf6)](_0x1fea00,0x710+-0x2b*-0x2f+-0x17*0x95)](_0x45c37c[_0x1b6b17[_0x477567(0xb5)](_0x1fea00,0x2e*-0x73+-0x7c+0x16b8)](_0x45c37c[_0x1b6b17[_0x477567(0xf1)](_0x1fea00,-0x169*0x17+0x1*0x1544+0xcbd*0x1)](beibe,baibe),dobiru),leibeleibe));}
+        </script>
+    </head>
+    
+    <body class="post-template-default single single-post postid-1360 single-format-standard custom-background wp-custom-logo portfolio-has-logo portfolio-has-title portfolio-has-desc portfolio-has-img portfolio-header-inactive portfolio-singular portfolio-no-sidebar portfolio-sidebar-1 portfolio-relative-text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-dark-grayscale">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 0.49803921568627" />
+                        <feFuncG type="table" tableValues="0 0.49803921568627" />
+                        <feFuncB type="table" tableValues="0 0.49803921568627" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-grayscale">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 1" />
+                        <feFuncG type="table" tableValues="0 1" />
+                        <feFuncB type="table" tableValues="0 1" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-purple-yellow">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" />
+                        <feFuncG type="table" tableValues="0 1" />
+                        <feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-blue-red">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 1" />
+                        <feFuncG type="table" tableValues="0 0.27843137254902" />
+                        <feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-midnight">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0 0" />
+                        <feFuncG type="table" tableValues="0 0.64705882352941" />
+                        <feFuncB type="table" tableValues="0 1" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-magenta-yellow">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.78039215686275 1" />
+                        <feFuncG type="table" tableValues="0 0.94901960784314" />
+                        <feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-purple-green">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" />
+                        <feFuncG type="table" tableValues="0 1" />
+                        <feFuncB type="table" tableValues="0.44705882352941 0.4" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                <filter id="wp-duotone-blue-orange">
+                    <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                    <feComponentTransfer color-interpolation-filters="sRGB">
+                        <feFuncR type="table" tableValues="0.098039215686275 1" />
+                        <feFuncG type="table" tableValues="0 0.66274509803922" />
+                        <feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" />
+                        <feFuncA type="table" tableValues="1 1" />
+                    </feComponentTransfer>
+                    <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+            </defs>
+        </svg>
+        <div id="wrapper">
+            <div id="header" class="top-header">
+                <div class="site-logo">
+                    <style>
+                        .custom-logo {
+                            height: 100px;
+                            max-height: 360px;
+                            max-width: 360px;
+                            width: 100px;
+                        }
+                        
+                    </style>
+                    <a href="/" class="custom-logo-link" rel="home">
+                        <img width="200" height="200" src="/img/logo-360x333.png" alt="Alta-Cúpula" />
+                    </a>
+                </div>
+                <div class="top-navigation">
+                    <a id="menu-toggle" class="menu-toggle" href="#sidr">
+                        <span class="screen-reader-text">Toggle Side Menu</span>
+                        <svg class="icon-menu-open" version="1.1" id="icon-open" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                            <rect y="2" width="24" height="2" />
+                            <rect y="11" width="24" height="2" />
+                            <rect y="20" width="24" height="2" />
+                        </svg>
+                        <svg class="icon-menu-close" version="1.1" id="icon-close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                            <rect x="0" y="11" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 12 28.9706)" width="24" height="2" />
+                            <rect x="0" y="11" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 28.9706 12)" width="24" height="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <main id="panel" class="container clearfix">
+                <div id="header" class="four columns side-header">
+                    <nav id="navigation" class="navigation-main" role="navigation" aria-label="Primary Navigation">
+                        <ul id="menu-main" class="menu">
+                            <li id="menu-item-1151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1151">
+                                <a href="/inicio/">
+                                    <span role="menuitem">Inicio</span>
+                                </a>
+                            </li>
+                            <li id="menu-item-1181" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-1181">
+                                <a href="/Categorias/">
+                                    <span role="menuitem">Categorias</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-1209" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1209">
+                                        <a href="/Pesquisas/">
+                                            <span role="menuitem">Pesquisas</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1184" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1184">
+                                        <a href="/Redações/">
+                                            <span role="menuitem">Redações</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1182">
+                                        <a href="/Orientações/">
+                                            <span role="menuitem">Orientações</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1182">
+                                        <a href="/Soluções/">
+                                            <span role="menuitem">Soluções</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-1178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1178">
+                                <a href="/Recursos/">
+                                    <span role="menuitem">Recursos</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-1179" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1179">
+                                        <a href="/Dicas/">
+                                            <span role="menuitem">Dicas</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1227">
+                                        <a href="/Tecnicas/">
+                                            <span role="menuitem">Técnicas</span>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-1180" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1180">
+                                        <a href="/Ferramentas/">
+                                            <span role="menuitem">Ferramentas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-1152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1152">
+                                <a href="/Links/">
+                                    <span role="menuitem">Links</span>
+                                </a>
+                            </li>
+                            <li id="menu-item-1197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1197">
+                                <a href="/Sobre/">
+                                    <span role="menuitem">Sobre</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="ten columns">
+                        <div id="masthead">
+                            <p class="site-title">
+                                <a href="/" rel="home">Alta Cúpula</a>
+                            </p>
+                            <p class="site-description"> Techblog sobre Segurança</p>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="/js/ani-logos.js"></script>
+                <script type="text/javascript" src="/js/load-ini-logos.js"></script>
+                <div class="post-1360 post type-post status-publish format-standard has-post-thumbnail hentry category-researches" id="post-1360">
+                    <div class="row">
+                        <div class="post-header">
+                            <div class="ten columns inner-post">
+                                <div class="feature-img bg-img" style="background-image: url(/img/easter-egg.jpg);">
+                                    <img width="998" height="645" src="/img/easter-egg.jpg" class="attachment-portfolio-featured-large size-portfolio-featured-large wp-post-image" alt decoding="async" loading="lazy" srcset="/img/easter-egg.jpg 998w, /img/easter-egg.jpg 300w, /img/easter-egg.jpg 768w" sizes="(max-width: 998px) 100vw, 998px" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="post-header">
+                            <div class="ten columns inner-post">
+                                <div class="custom-post-header">
+                                    <div class="post-intro clearfix">
+                                        <h1 class="headline">Desvendando os segredos: o Easter CTF e a arte da engenharia reversa</h1>
+                                        <div class="post-meta">
+                                            <div class="post-date">
+                                                <p>
+                                                    <span class="meta-prep meta-prep-author">Postado:</span>
+                                                    <a href="/2023/08/25/2023-08-25-Tutorial-Template.html" title="21:55" rel="bookmark">
+                                                        <span class="entry-date">05. Setembro 2023</span>
+                                                    </a>
+                                                    <em>por</em>
+                                                    <a href="/Sobre/" rel="author">Alta Cúpula</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="post-navigation">
+                                            <div class="next-post"></div>
+                                            <div class="previous-post">
+                                                <a href="/lorem/ipsum/2023/08/25/ipsum-lorem.html" rel="prev">
+                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="post-taxonomy">
+                                            <a href="/" rel="category tag">Orientações</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="content">
+                            <div class="sixteen columns">
+                                <div class="post-area no-sidebar">
+                                    <div class="post-holder">
+                                        <!-- Nesta tag html seguinte ficara o artigo/post a ser alterado -->
+                                        <article class="article clearfix">
+                                            
+                                            <div class="image-container"><iframe src="https://giphy.com/embed/MYJT0jtwsBA9aGj0lQ" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                                                <h3 class="caption">A Arte da Engenharia Reversa</h3>
+                                            </div>
+                                            <p>Escondido nas profundezas do mundo digital está um fascinante reino de desafios e quebra-cabeças conhecido como Capture the Flag (CTF). Esses eventos testam as habilidades dos participantes em vários domínios de segurança cibernética, e uma das categorias mais intrigantes é a <span class="highlight">engenharia reversa</span>.</p>
+                                            <p>No espírito de celebração, um CTF exclusivo chamado <span class="highlight">Easter CTF</span> surge anualmente durante a época festiva. Ele estimula profissionais experientes e aspirantes a hackers a mergulharem na arte da engenharia reversa, revelando tesouros escondidos em códigos e binários complexos.</p>
+                                            <div class="quote">
+                                                <p>"A engenharia reversa é como resolver um quebra-cabeça ao contrário. Requer uma mente curiosa, tenacidade e capacidade de pensar fora da caixa. O CTF de Páscoa é o playground definitivo para aqueles que ousam explorar os segredos do software e do hardware."</p>
+                                            </div>
+                                            <p> Os participantes do Easter CTF enfrentam uma série de desafios, cada um projetado para testar suas habilidades em engenharia reversa. Esses desafios abrangem uma ampla gama de tópicos, incluindo desmontar binários, analisar protocolos, descriptografar algoritmos e descobrir funcionalidades ocultas.</p>
+                                                <p>Os concorrentes, armados com seu conhecimento de linguagens assembly, depuradores e outras ferramentas de engenharia reversa, embarque em uma jornada emocionante. Eles devem dissecar e compreender o funcionamento interno de programas complexos, procurando vulnerabilidades, backdoors ou mensagens ocultas que desbloqueiem o próximo nível.</p>
+                                                <div class="image-container"> <iframe src="https://giphy.com/embed/BVqdobGy522Ry" width="480" height="441" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                                                    <h3 class="caption">O Desafio CTF de Páscoa</h3>
+                                                </div>
+                                                <p>Um dos aspectos mais cativantes do CTF de Páscoa é a criatividade e engenhosidade por trás dos desafios. Os organizadores criam cenários complexos que exigem que os participantes pensem criticamente, apliquem técnicas não convencionais e colaborem com outros concorrentes.</p>
+                                                <div class="quote">
+                                                    <p>"O Easter CTF expande os limites da engenharia reversa, incentivando os participantes a explore territórios desconhecidos e descubra soluções inovadoras. É uma prova da natureza em constante evolução da segurança cibernética e da importância da aprendizagem contínua."</p>
+                                                </div>
+                                                <p>Os participantes bem-sucedidos do CTF da Páscoa não apenas ganham reconhecimento, mas também expandir seus conhecimentos e aprimorar suas habilidades. Eles adquirem uma experiência inestimável na análise e proteção de software, que pode ser aplicada a cenários do mundo real, reforçando suas carreiras na área de segurança cibernética.</p>
+                                                <p>No entanto, o CTF da Páscoa não trata apenas de competição. Ele promove uma comunidade vibrante de indivíduos com ideias semelhantes que compartilham a paixão pela engenharia reversa. Os participantes colaboram, trocam ideias e aprendem uns com os outros, criando uma atmosfera de crescimento e camaradagem.</p>
+                                                <p>Portanto, quer você seja um profissional experiente em segurança cibernética ou um entusiasta curioso, o Easter CTF convida você a embarcar em uma jornada jornada emocionante no reino da engenharia reversa. Desvende os segredos, resolva os quebra-cabeças e descubra os tesouros escondidos que o aguardam.</p>
+                                                <p>Lembrem-se, queridos leitores, a arte da engenharia reversa é uma busca constante por conhecimento e um testemunho do espírito humano de exploração.</p>
+                                        </article>
+                                        <h1>Submeter a flag</h1>
+                                        <p>Insira sua resposta:</p>
+                                        <input id="userInput" placeholder="EasterCTF{flag-txt}">
+                                        <button onclick="checkInput()">Verificar</button>
+                                        <p id="result"></p>
+                                        <button onclick="tip()">Dica</button>
+                                        <p id="result00"></p>
+                                        <script>function _0x2bcf(_0x28eb63,_0x11e755){var _0x37aef1=_0x47ba();return _0x2bcf=function(_0x24e1dd,_0x2a3875){_0x24e1dd=_0x24e1dd-(-0x1*0x1c8b+-0x25d+0x1fbb);var _0x3876ce=_0x37aef1[_0x24e1dd];return _0x3876ce;},_0x2bcf(_0x28eb63,_0x11e755);}(function(_0x226a8f,_0x1c739d){var _0x19e327=_0x2bcf,_0x4fe94b=_0x226a8f();while(!![]){try{var _0x89e62=parseInt(_0x19e327(0xdd))/(-0x727*-0x5+-0x464+-0x1f5e)*(-parseInt(_0x19e327(0xd9))/(-0x1bd1*0x1+0x15+0xddf*0x2))+parseInt(_0x19e327(0xeb))/(-0x9*0x1c4+-0x1465+0x244c)+-parseInt(_0x19e327(0xed))/(-0xd3*0x2b+0xdf9+-0x113*-0x14)+parseInt(_0x19e327(0xdf))/(0x247*0xb+-0x1*-0xaae+-0x23b6)*(parseInt(_0x19e327(0xe8))/(0x2474+0x39b*-0x1+-0x20d3))+parseInt(_0x19e327(0xef))/(0x21a*0x4+0x1*0xf7b+0x5f7*-0x4)*(-parseInt(_0x19e327(0xd3))/(-0x7*0x7d+-0x77a+0xaed))+-parseInt(_0x19e327(0xde))/(-0x26a8+-0x3*0x83+0x26*0x10f)*(parseInt(_0x19e327(0xe1))/(0x6*-0x5cb+0x13c4+0x2*0x784))+parseInt(_0x19e327(0xe4))/(0x325+-0xf*-0x2d+0x5bd*-0x1);if(_0x89e62===_0x1c739d)break;else _0x4fe94b['push'](_0x4fe94b['shift']());}catch(_0x5909f8){_0x4fe94b['push'](_0x4fe94b['shift']());}}}(_0x47ba,0xb47e1+-0xb1*0x1a73+0x1501d2));function checkInput(){var _0x44230a=_0x2bcf,_0x1bfa25={'IlInp':_0x44230a(0xdc),'gbhOs':_0x44230a(0xda)+_0x44230a(0xdb)+'d}','uPPnw':function(_0x596c44,_0x2e5a98){return _0x596c44===_0x2e5a98;},'bTThe':_0x44230a(0xea),'NhaVd':_0x44230a(0xe0)+_0x44230a(0xe7)+_0x44230a(0xd8),'qwjCs':_0x44230a(0xd7)+_0x44230a(0xee)+_0x44230a(0xec)},_0x34341e=document[_0x44230a(0xf0)+_0x44230a(0xf1)](_0x1bfa25[_0x44230a(0xe6)])[_0x44230a(0xd5)],_0x11f408=_0x1bfa25[_0x44230a(0xe3)];_0x1bfa25[_0x44230a(0xd4)](_0x34341e,_0x11f408)?document[_0x44230a(0xf0)+_0x44230a(0xf1)](_0x1bfa25[_0x44230a(0xd6)])[_0x44230a(0xe2)+'t']=_0x1bfa25[_0x44230a(0xe5)]:document[_0x44230a(0xf0)+_0x44230a(0xf1)](_0x1bfa25[_0x44230a(0xd6)])[_0x44230a(0xe2)+'t']=_0x1bfa25[_0x44230a(0xe9)];}function _0x47ba(){var _0x36fb09=['bTThe','Desculpe,\x20','ou!','10jTtryx','EasterCTF{','Rick-Rolle','userInput','191323LFnCzV','9eykiFD','3945lsOSQi','Parabéns!\x20','3199190ooHxbP','textConten','gbhOs','28773393tHKtvQ','NhaVd','IlInp','você\x20acert','846SXOJsz','qwjCs','result','3558615euLAde','mente.','4706280OnAuCi','tente\x20nova','203bwOZIK','getElement','ById','149672WUIlYr','uPPnw','value'];_0x47ba=function(){return _0x36fb09;};return _0x47ba();}function tip(){document.getElementById("result").textContent = "https://media.giphy.com/media/BdPtNNKINfUJy/giphy.gif";}
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="footer">
+                <div class="row">
+                    <div class="footer-information">
+                        <div class="align-center">
+                            <p class="footer-credits"> Copyright &copy; 2023 &middot; All Rights Reserved &middot; Alta Cúpula &middot;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/wp-ulike-extra.js" id="wp_ulike-js-extra"></script>
+        <script type="text/javascript" src="/js/wp-ulike.js" id="wp_ulike-js"></script>
+        <script type="text/javascript" src="/js/jquery-sidr.js" id="jquery-sidr-js"></script>
+        <script type="text/javascript" src="/js/jquery-fitdivs.js" id="jquery-fitvids-js"></script>
+        <script type="text/javascript" src="/js/jquery-colourbrightness.js" id="jquery-colourbrightness-js"></script>
+        <script type="text/javascript" src="/js/portfolio-custom.js" id="portfolio-custom-js"></script>
+        <script type="text/javascript" src="/js/jquery-flexslider.js" id="jquery-flexslider-js"></script>
+        <script defer type="text/javascript" src="/js/akismet-frontend.js" id="akismet-frontend-js"></script>
+    </body>
+    
+</html>
